@@ -152,11 +152,10 @@ async function ensureSheetExists(sheetsAuth, spreadsheetId, title) {
 }
 
 async function ensureLogHeader(sheetsAuth, spreadsheetId) {
-  const range = `${LOG_SHEET}!A1:L1`;
+  const range = `${LOG_SHEET}!A1:M1`;
   const res = await sheetsAuth.spreadsheets.values.get({ spreadsheetId, range });
   const row = res.data.values?.[0];
-  if (row && row.length >= 12) return;
-  const headers = [
+  const fullHeaders = [
     "ログ記録日時",
     "NotionページID",
     "Name",
@@ -169,12 +168,23 @@ async function ensureLogHeader(sheetsAuth, spreadsheetId) {
     "交通費",
     "ID",
     "イベント種別",
+    "改ざんフラグ",
   ];
+  if (row && row.length >= 13) return;
+  if (row && row.length >= 12) {
+    await sheetsAuth.spreadsheets.values.update({
+      spreadsheetId,
+      range: `${LOG_SHEET}!M1`,
+      valueInputOption: "RAW",
+      requestBody: { values: [["改ざんフラグ"]] },
+    });
+    return;
+  }
   await sheetsAuth.spreadsheets.values.update({
     spreadsheetId,
-    range: `${LOG_SHEET}!A1:L1`,
+    range: `${LOG_SHEET}!A1:M1`,
     valueInputOption: "RAW",
-    requestBody: { values: [headers] },
+    requestBody: { values: [fullHeaders] },
   });
 }
 
