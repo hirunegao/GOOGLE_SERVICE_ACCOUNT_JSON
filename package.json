@@ -8,7 +8,8 @@
   "scripts": {
     "sync": "node scripts/sync.mjs",
     "setup-sheet": "node scripts/setup-google-sheet.mjs",
-    "append-test-row": "node scripts/append-test-row.mjs"
+    "append-test-row": "node scripts/append-test-row.mjs",
+    "delete-test-rows": "node scripts/delete-test-rows.mjs"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.15",
