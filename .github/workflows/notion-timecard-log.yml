@@ -2,9 +2,8 @@ name: Notion timecard external log
 
 on:
   workflow_dispatch:
-  # 定期実行する場合は下を有効化（UTC。例: 5分ごと = */5 * * * *）
-  # schedule:
-  #   - cron: "*/5 * * * *"
+  schedule:
+    - cron: "*/5 * * * *"
 
 jobs:
   sync:
