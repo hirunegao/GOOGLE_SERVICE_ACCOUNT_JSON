@@ -6,6 +6,9 @@
 service-account*.json
 credentials.json
 
+# Node
+node_modules/
+
 # OS / editor
 .DS_Store
 Thumbs.db
