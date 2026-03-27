@@ -13,7 +13,9 @@ Notion「タイムカード」DBの更新を外部（Google スプレッドシ�
 | 内容 | 説明 |
 |------|------|
 | `scripts/sync.mjs` | Notion API で「前回同期以降に更新されたページ」を取得し、Sheets の **A〜L 列**に追記（**M 列**は改ざんフラグ用・数式は手動または別ドキュメント） |
+| `scripts/append-test-row.mjs` | Sheets にテスト行を 1 行追記（接続確認用） |
 | `.github/workflows/notion-timecard-log.yml` | `npm ci` → `npm run sync` を実行（既定は **手動 `workflow_dispatch` のみ**。定期は YAML 内の `schedule` を有効化） |
+| `.github/workflows/sheet-test-write.yml` | `npm run append-test-row` を実行（手動テスト用） |
 
 同期の基準時刻はスプレッドシートの **`Config` シートの `A1`**（UTC の ISO 時刻）に保存します。初回は `A1` が空のため、`INITIAL_SYNC_DAYS`（既定 7）日前から取得します。
 
