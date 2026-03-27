@@ -6,7 +6,8 @@
     "node": ">=20"
   },
   "scripts": {
-    "sync": "node scripts/sync.mjs"
+    "sync": "node scripts/sync.mjs",
+    "setup-sheet": "node scripts/setup-google-sheet.mjs"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.15",

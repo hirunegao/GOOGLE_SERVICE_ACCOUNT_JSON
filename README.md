@@ -6,6 +6,8 @@ Notion「タイムカード」DBの更新を外部（Google スプレッドシ�
 
 **手順書（スプレッドシート / Make / 改ざん判定 / テスト）**: [docs/IMPLEMENTATION.md](docs/IMPLEMENTATION.md)
 
+**スプレッドシートの一括初期化**（ヘッダー・Config・M 列数式）: `scripts/setup-google-sheet.mjs`（[IMPLEMENTATION の 1-0](docs/IMPLEMENTATION.md)）。`GOOGLE_SERVICE_ACCOUNT_JSON` が必要。
+
 ## 含まれるもの
 
 | 内容 | 説明 |

@@ -6,6 +6,22 @@
 
 ## Step 1: Google スプレッドシート
 
+### 1-0. 自動セットアップ（推奨・サービスアカウント利用時）
+
+ブックを **Google サービスアカウントのメール**（`...@...iam.gserviceaccount.com`）に **編集者**として共有したうえで、リポジトリで次を実行すると、**A1:M1 ヘッダー・`Config` シート・M 列の数式（約 998 行分）**を一括で入れられる。
+
+```powershell
+cd <このリポジトリのルート>
+$env:GOOGLE_SERVICE_ACCOUNT_JSON = Get-Content -Raw .\service-account.json
+# 省略可: 既定で [タイムカード外部ログ](https://docs.google.com/spreadsheets/d/1POhwoAvOU2ar31ZK4Yn_pFYG2MZgtRjNy1gFK-qCtco/edit) の ID を使用
+# $env:SPREADSHEET_ID="1POhwoAvOU2ar31ZK4Yn_pFYG2MZgtRjNy1gFK-qCtco"
+& "C:\Program Files\nodejs\node.exe" scripts/setup-google-sheet.mjs
+```
+
+ログ用シート名が `シート1` の場合も自動検出する。別名のときは `$env:SHEET_NAME="ログ"` のように指定。
+
+**共有・シート保護（1-5）は API では代替しにくいため、実行後も手動で設定する。**
+
 ### 1-1. ファイル
 
 - **名前**: `タイムカード外部ログ（改ざん検知用）`（任意）
