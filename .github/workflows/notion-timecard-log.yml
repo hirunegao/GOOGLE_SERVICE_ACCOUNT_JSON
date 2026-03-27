@@ -1,0 +1,25 @@
+# タイムカード DB → 外部ログ（スプレッドシート）の自動記録（枠のみ）
+#
+# 運用前に:
+# - Repository secrets: NOTION_TOKEN, NOTION_DATABASE_ID（必須）
+# - Google Sheets 書き込み用の認証を secrets に追加し、下記 steps を実装
+#
+# 定期実行する場合は on.schedule を有効化（コメント解除）し、cron を調整。
+
+name: Notion timecard external log
+
+on:
+  workflow_dispatch: # 手動テスト用
+  # schedule:
+  #   - cron: "*/5 * * * *" # 5分ごと（UTC）。必要に応じて変更
+
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Placeholder — ここに Notion API → Google Sheets の処理を追加
+        run: |
+          echo "Secrets に NOTION_TOKEN / NOTION_DATABASE_ID を設定したうえで、"
+          echo "スクリプト（例: Node または Python）で Notion をクエリし、Sheets に行追加してください。"

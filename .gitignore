@@ -1,0 +1,12 @@
+# Secrets / local env (never commit)
+.env
+.env.*
+!.env.example
+*.pem
+service-account*.json
+credentials.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
